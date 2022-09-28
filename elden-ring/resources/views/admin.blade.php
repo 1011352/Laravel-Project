@@ -13,7 +13,7 @@
             <td>Email</td>
             <td>Passowrd</td>
         </tr>
-        @foreach($users as $user)
+        @foreach($user as $user)
         <tr>
             <td>{{$user['id']}}</td>
             <td>{{$user['name']}}</td>
