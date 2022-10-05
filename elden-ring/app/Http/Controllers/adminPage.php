@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\User;
+use App\Models\User;
 
 class adminPage extends Controller
 {
     public function show()  {
-        $data=user::all();
-        return view('admin', ['user'=>$data]);
+        $data=User::all();
+        return view('admin', ['users'=>$data]);
     }
 }

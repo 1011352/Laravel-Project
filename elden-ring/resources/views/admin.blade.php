@@ -11,14 +11,17 @@
             <td>ID</td>
             <td>Name</td>
             <td>Email</td>
-            <td>Passowrd</td>
+            <td>Password</td>
+            <td>Role</td>
+
         </tr>
-        @foreach($user as $user)
+        @foreach($users as $user)
         <tr>
-            <td>{{$user['id']}}</td>
-            <td>{{$user['name']}}</td>
-            <td>{{$user['email']}}</td>
-            <td>{{$user['password']}}</td>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->password}}</td>
+            <td>{{$user->role}}</td>
     </tr>
 @endforeach
 
