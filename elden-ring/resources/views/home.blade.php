@@ -20,4 +20,5 @@
         </div>
     </div>
 </div>
+<a href = "{{url('home1')}}">Home</a>
 @endsection

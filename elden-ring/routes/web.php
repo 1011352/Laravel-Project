@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home1',[homePage::class,'home']);
-Route::get('/admin',[adminPage::class,'show']);
+Route::get('/home1',[homePage::class,'home'])->name('home1');
+Route::get('/admin',[adminPage::class,'show'])->name('admin');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

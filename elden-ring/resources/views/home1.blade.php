@@ -1,11 +1,11 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Elden Ring</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+<div class="container"></div>
+    <div class="row justify-content-center"></div>
+        <div class="col-md-8"></div>
+            <div class="card"></div>
+            <h1>Elden Ring</h1>
+
+            <a href = "{{url('home')}}">Log In</a>
+@endsection
