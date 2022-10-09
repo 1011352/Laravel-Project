@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homePage;
 use App\Http\Controllers\adminPage;
 use App\Http\Controllers\HomeController;
+use \App\Http\Controllers\weaponsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,6 @@ Route::get('/home1',[homePage::class,'home'])->name('home1');
 Route::get('/admin',[adminPage::class,'show'])->name('admin');
 Auth::routes();
 
+
+Route::resource('weapons',weaponsController::class);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
