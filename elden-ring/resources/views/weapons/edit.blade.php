@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
 <html lang="en">
 
 <head>
@@ -65,4 +67,4 @@
 </div>
 </body>
 
-</html>
+@endsection

@@ -117,6 +117,8 @@
       <excludeFolder url="file://$MODULE_DIR$/elden-ring/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/elden-ring/vendor/ramsey/collection" />
       <excludeFolder url="file://$MODULE_DIR$/elden-ring/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/elden-ring/storage/app" />
+      <excludeFolder url="file://$MODULE_DIR$/elden-ring/storage/framework" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

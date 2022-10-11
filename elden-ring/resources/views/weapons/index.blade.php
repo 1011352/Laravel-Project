@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+
+@section('content')
 <head>
     <meta charset="UTF-8">
     <title>All Builds Made</title>
@@ -54,4 +55,4 @@
     {!! $weapons->links() !!}
 </div>
 </body>
-</html>
+@endsection
