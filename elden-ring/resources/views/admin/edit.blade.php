@@ -14,10 +14,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Build</h2>
+                <h2>Edit User</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('weapons.index') }}" enctype="multipart/form-data">
+                <a class="btn btn-primary" href="{{ route('admin.index') }}" enctype="multipart/form-data">
                     Back</a>
             </div>
         </div>
@@ -27,36 +27,36 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('weapons.update',$weapon->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.update',$admin->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Weapon 1:</strong>
-                    <input type="text" name="weapon 1" value="{{ $weapon->weapon_1 }}" class="form-control"
-                           placeholder="Weapon name">
-                    @error('weapon_1')
+                    <strong>Name:</strong>
+                    <input type="text" name="name" value="{{ $admin->name }}" class="form-control"
+                           placeholder="Name">
+                    @error('name')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Weapon 2:</strong>
-                    <input type="text" name="weapon 2" class="form-control" placeholder="weapon 2"
-                           value="{{ $weapon->weapon_2 }}">
-                    @error('weapon_2')
+                    <strong>Email:</strong>
+                    <input type="text" name="email" class="form-control" placeholder="Email"
+                           value="{{ $admin->email }}">
+                    @error('email')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Description:</strong>
-                    <input type="text" name="description" value="{{ $weapon->description }}" class="form-control"
-                           placeholder="Description">
-                    @error('description')
+                    <strong>Role:</strong>
+                    <input type="text" name="role" value="{{ $admin->role }}" class="form-control"
+                           placeholder="role">
+                    @error('role')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>

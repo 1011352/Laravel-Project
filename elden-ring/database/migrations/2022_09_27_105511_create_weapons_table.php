@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('weapons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('weapon_1');
             $table->string('weapon_2');
             $table->longText('description');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

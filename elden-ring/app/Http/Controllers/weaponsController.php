@@ -44,13 +44,8 @@ class weaponsController extends Controller
 
     public function update(Request $request, weapon $weapon)
     {
-        $request->validate([
-            'weapon_1' => 'required',
-            'weapon_2' => 'required',
-            'description' => 'required',
-        ]);
 
-        $weapon->fill($request->post())->save();
+        $weapon->update($request->all());
 
         return redirect()->route('weapons.index')->with('success', 'Build Has Been updated successfully');
     }
