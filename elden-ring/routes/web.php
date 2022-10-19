@@ -22,15 +22,11 @@ Route::get('/admin-home', function () {
 });
 
 Route::get('/home1',[homePage::class,'home'])->name('home1');
-//Route::get('/admin',[adminPage::class,'index'])->name('admin');
-//Route::get('/admin/users',[adminPage::class,'show'])->name('users');
 Auth::routes();
 
 
 Route::resource('weapons',weaponsController::class);
-//Route::resource('admin', adminPage::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::resource('admin',[adminPage::class]);
 Route::middleware(['auth','role_admin'])->group(function (){
     Route::resource('admin', adminPage::class);
 });
