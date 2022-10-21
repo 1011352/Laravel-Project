@@ -25,9 +25,18 @@ Route::get('/home1',[homePage::class,'home'])->name('home1');
 Auth::routes();
 
 
-Route::resource('weapons',weaponsController::class);
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth','role_admin'])->group(function (){
     Route::resource('admin', adminPage::class);
+
 });
+
+Route::middleware(['auth'])->group(function (){
+    Route::resource('weapons',weaponsController::class);
+    Route::post('weapons/search', [weaponsController::class, 'search'])->name('weapons.search');
+
+});
+
+
 

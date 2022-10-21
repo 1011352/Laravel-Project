@@ -46,6 +46,19 @@
                     @enderror
                 </div>
             </div>
+            <label for="category_id" class="form-label">Choose Arctype:</label>
+            <select id="category_id"
+                    name="category_id"
+                    class="@error('category_id') is-invalid @enderror form-select">
+                <option @if(old('category_id') == '')selected @endif disabled hidden style='display: none'
+                        value=''></option>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}" class="dropdown-item">{{$category->name}}</option>
+                @endforeach
+            </select>
+            @error('category_id')
+            <span class="">{{$message}}</span>
+            @enderror
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Description:</strong>

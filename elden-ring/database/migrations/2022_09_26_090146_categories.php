@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('weapons', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table){
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('category_id')->constrained();
-            $table->string('weapon_1');
-            $table->string('weapon_2');
-            $table->longText('description');
-            $table->string('img')->nullable();
+            $table->text('name')->unique();
             $table->timestamps();
         });
-    }
+
+}
+
 
     /**
      * Reverse the migrations.
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weapons');
+        //
     }
 };

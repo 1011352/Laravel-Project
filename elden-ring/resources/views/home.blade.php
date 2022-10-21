@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @foreach($weapons as $weapon)
+    
+    <a href="{{route('weapons.index')}}" class="btn btn-primary btn-sm">Everything</a>
+    @foreach($categories as $category)
+        <a href="{{route('home', ['category' => $category->id])}}"
+           class="btn btn-primary btn-sm">{{$category->name}}</a>
+    @endforeach
 
+    <div class="row justify-content-center">
+            @foreach($weapons as $weapon)
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="https://eldenring.wiki.fextralife.com/file/Elden-Ring/rivers_of_blood_katana_weapon_elden_ring_wiki_guide_200px.png" alt="Card image cap">
                     <div class="card-body">
@@ -19,5 +23,4 @@
             @endforeach
     </div>
 
-<a href = "{{url('')}}">Home</a>
 @endsection
