@@ -14,7 +14,8 @@ class weaponsController extends Controller
         public function index(Request $request)
         {
             if ($request->has('category')) {
-                $weapons = Weapon::where('category_id', '=', $request->query('category'))->get();
+                $user_id=app('request')->user()->id;
+                $weapons = Weapon::where('category_id', '=', $request->query('category'))->where('user_id',$user_id)->get();
             } elseif(Auth::user()->role){
                 $weapons = Weapon::all();
             } else {

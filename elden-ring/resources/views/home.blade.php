@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    
-    <a href="{{route('weapons.index')}}" class="btn btn-primary btn-sm">Everything</a>
+
+    <a href="{{route('home')}}" class="btn btn-primary btn-sm">Everything</a>
     @foreach($categories as $category)
         <a href="{{route('home', ['category' => $category->id])}}"
            class="btn btn-primary btn-sm">{{$category->name}}</a>

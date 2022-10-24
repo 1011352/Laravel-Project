@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('weapon_1');
             $table->string('weapon_2');
             $table->longText('description');
+            $table->boolean('visibility');
             $table->string('img')->nullable();
             $table->timestamps();
         });
