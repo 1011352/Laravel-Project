@@ -2,6 +2,13 @@
 
 @section('content')
 
+    <form action="{{route('home.search')}}" method="post">
+        @csrf
+        <label for="search">Search:</label>
+        <input id="search" type="text" name="search">
+        <input name="submit" type="submit" class="btn btn-primary"/>
+    </form>
+
     <a href="{{route('home')}}" class="btn btn-primary btn-sm">Everything</a>
     @foreach($categories as $category)
         <a href="{{route('home', ['category' => $category->id])}}"

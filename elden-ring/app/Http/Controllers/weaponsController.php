@@ -41,6 +41,8 @@ class weaponsController extends Controller
             'weapon_1' => 'required',
             'weapon_2' => 'required',
             'description' => 'required',
+            'visibility' => 'required',
+
         ]);
 
         weapon::create($request->post());

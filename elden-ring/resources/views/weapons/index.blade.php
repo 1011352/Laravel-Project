@@ -26,7 +26,7 @@
 
     <form action="{{route('weapons.search')}}" method="post">
         @csrf
-        <label for="search">Zoeken:</label>
+        <label for="search">Search:</label>
         <input id="search" type="text" name="search">
         <input name="submit" type="submit" class="btn btn-primary"/>
     </form>
@@ -69,7 +69,7 @@
             </tr>
         @endforeach
         </tbody>
-    </table>    
+    </table>
 </div>
 </body>
 @endsection

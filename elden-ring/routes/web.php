@@ -27,6 +27,7 @@ Auth::routes();
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('home/search', [HomeController::class, 'search'])->name('home.search');
 Route::middleware(['auth','role_admin'])->group(function (){
     Route::resource('admin', adminPage::class);
 
