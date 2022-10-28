@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>All Builds Made</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
 <div class="container mt-2">
@@ -64,6 +67,9 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        <input data-id="{{$weapon->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
+                               data-offstyle="danger" data-toggle="toggle" data-on="Active"
+                               data-off="InActive" {{ $weapon->visibility ? 'checked' : '' }}>
                     </form>
                 </td>
             </tr>
@@ -72,4 +78,22 @@
     </table>
 </div>
 </body>
+<script>
+    $(function() {
+        $('.toggle-class').change(function() {
+            const visibility = $(this).prop('checked') === true ? 1 : 0;
+            const weapon_id = $(this).data('id');
+            $.ajax({
+
+                type: "GET",
+                dataType: "json",
+                url: '/changeVisibility',
+                data: {'visibility': visibility, 'weapon_id': weapon_id},
+                success: function(data){
+                    console.log(data.success)
+                }
+            });
+        })
+    });
+</script>
 @endsection

@@ -13,20 +13,30 @@ class weaponsController extends Controller
 
         public function index(Request $request)
         {
-            if ($request->has('category')) {
-                $user_id=app('request')->user()->id;
-                $weapons = Weapon::where('category_id', '=', $request->query('category'))->where('user_id',$user_id)->get();
-            } elseif(Auth::user()->role){
-                $weapons = Weapon::all();
-            } else {
-                $user_id=app('request')->user()->id;
+            if (Auth::user()->role) {
+                if ($request->has('category')) {
+                    $weapons = Weapon::where('category_id', '=', $request->query('category'))->get();
+                } else {
+                    $weapons = Weapon::all();
+                }
+                $categories = Category::all();
 
-                $weapons = Weapon::where('user_id',$user_id )->get();
+                return view('weapons.index', compact('weapons', 'categories'));
+
             }
+            if (Auth::user()) {
+                if ($request->has('category')) {
+                    $user_id = app('request')->user()->id;
+                    $weapons = Weapon::where('category_id', '=', $request->query('category'))->where('user_id', $user_id)->get();
+                } else {
+                    $user_id = app('request')->user()->id;
 
-            $categories = Category::all();
+                    $weapons = Weapon::where('user_id', $user_id)->get();
+                }
+                $categories = Category::all();
 
-            return view('weapons.index', compact('weapons', 'categories'));
+                return view('weapons.index', compact('weapons', 'categories'));
+            }
 
         }
     public function create()
@@ -41,7 +51,6 @@ class weaponsController extends Controller
             'weapon_1' => 'required',
             'weapon_2' => 'required',
             'description' => 'required',
-            'visibility' => 'required',
 
         ]);
 
@@ -64,6 +73,12 @@ class weaponsController extends Controller
 
     public function update(Request $request, weapon $weapon)
     {
+        $request->validate([
+            'weapon_1' => 'required',
+            'weapon_2' => 'required',
+            'description' => 'required',
+
+        ]);
 
         $weapon->update($request->all());
 
@@ -87,4 +102,13 @@ class weaponsController extends Controller
             ->get();
         return view('weapons.index', compact('weapons','categories'));
     }
+
+    public function updateVisibility(Request $request)
+    {
+        $weapon = Weapon::find($request->weapon_id);
+        $weapon->visibility = $request->visibility;
+        $weapon->save();
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }
+

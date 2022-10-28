@@ -36,6 +36,7 @@ Route::middleware(['auth','role_admin'])->group(function (){
 Route::middleware(['auth'])->group(function (){
     Route::resource('weapons',weaponsController::class);
     Route::post('weapons/search', [weaponsController::class, 'search'])->name('weapons.search');
+    Route::get('/changeVisibility', [weaponsController::class,'updateVisibility'])->name('weapons.visibility-update');
 
 });
 
