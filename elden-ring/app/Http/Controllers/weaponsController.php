@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Authenticate;
 use App\Models\Category;
+use App\Models\User;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use App\Models\Weapon;
 use Illuminate\Support\Facades\Auth;
+use function Symfony\Component\String\u;
 
 class weaponsController extends Controller
 {
@@ -20,8 +24,10 @@ class weaponsController extends Controller
                     $weapons = Weapon::all();
                 }
                 $categories = Category::all();
+                $users = User::all();
 
-                return view('weapons.index', compact('weapons', 'categories'));
+                $diff = '10';
+                return view('weapons.index', compact('weapons', 'categories','users', 'diff'));
 
             }
             if (Auth::user()) {
@@ -33,14 +39,32 @@ class weaponsController extends Controller
 
                     $weapons = Weapon::where('user_id', $user_id)->get();
                 }
-                $categories = Category::all();
 
-                return view('weapons.index', compact('weapons', 'categories'));
+
+
+
+
+                $categories = Category::all();
+                $users = User::all();
+                $created = Carbon::parse($request->created_at);
+                $now = Carbon::now();
+                $diff = $created->diffInDays($now);
+
+                return view('weapons.index', compact('weapons', 'categories','users','diff'));
             }
 
         }
+
+
+    public function show($id)
+    {
+        $weapon = Weapon::find($id);
+        return view('weapons.show', compact('weapon'));
+    }
+
     public function create()
     {
+
         $categories = Category::all();
         return view('weapons.create', compact('categories'));
     }
@@ -58,11 +82,6 @@ class weaponsController extends Controller
 
 
         return redirect()->route('weapons.index')->with('success', 'Build has been created successfully.');
-    }
-
-    public function show(weapon $weapon)
-    {
-        return view('weapons.index', compact('weapon'));
     }
 
     public function edit(weapon $weapon)
@@ -110,5 +129,7 @@ class weaponsController extends Controller
         $weapon->save();
         return response()->json(['success'=>'Status change successfully.']);
     }
+
+
 }
 

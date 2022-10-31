@@ -16,9 +16,25 @@
             <div class="pull-left">
                 <h2>All Builds made</h2>
             </div>
-            <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('weapons.create') }}"> Create Build</a>
-            </div>
+            @if($diff > '5' )
+
+                <div class="pull-right mb-2">
+                    <a class="btn btn-primary" href="{{ route('weapons.create') }}"> Create Build</a>
+                </div>
+            @else
+                <div class="pull-right mb-2">
+                    <button class="btn-secondary" onclick="myFunction()">Create Build</button>
+                </div>
+
+                <script>
+                    function myFunction() {
+                        alert("Account is Younger than 5 days");
+                    }
+                </script>
+
+            @endif
+
+
         </div>
     </div>
     @if ($message = Session::get('success'))

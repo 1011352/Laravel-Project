@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\userPage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homePage;
 use App\Http\Controllers\adminPage;
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('weapons',weaponsController::class);
     Route::post('weapons/search', [weaponsController::class, 'search'])->name('weapons.search');
     Route::get('/changeVisibility', [weaponsController::class,'updateVisibility'])->name('weapons.visibility-update');
+    Route::resource('user', userPage::class);
 
 });
 

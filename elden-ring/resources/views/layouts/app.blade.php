@@ -59,6 +59,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{ route('weapons.index') }}">Your Builds</a>
+                                    <a class="dropdown-item" href="{{ route('user.index') }}">Your Info</a>
                                     @if(Auth::user()->role)
                                         <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>
                                     @endif

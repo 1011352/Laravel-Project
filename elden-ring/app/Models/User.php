@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -42,6 +43,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected $dates = ['created_at', 'updated_at'];
+    // whatever other columns you want to use Carbon on ^.
 
 
     public function role($role) {
@@ -49,4 +52,9 @@ class User extends Authenticatable
 
         return in_array($this->role, $role);
     }
+
+    public function getDate() {
+        return $this->created_at->format('y-m-d');
+    }
+
 }
