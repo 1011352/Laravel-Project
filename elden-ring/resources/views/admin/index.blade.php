@@ -53,5 +53,10 @@
             </tbody>
         </table>
     </div>
+    <div class="m-auto">
+
+        {{$users->links()}}
+
+    </div>
     </body>
 @endsection

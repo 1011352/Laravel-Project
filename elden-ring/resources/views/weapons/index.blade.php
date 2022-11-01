@@ -16,7 +16,7 @@
             <div class="pull-left">
                 <h2>All Builds made</h2>
             </div>
-            @if($diff > '5' )
+            @if((\Carbon\Carbon::now()->timestamp - auth()->user()->created_at->timestamp) >= 84000)
 
                 <div class="pull-right mb-2">
                     <a class="btn btn-primary" href="{{ route('weapons.create') }}"> Create Build</a>
@@ -28,7 +28,7 @@
 
                 <script>
                     function myFunction() {
-                        alert("Account is Younger than 5 days");
+                        alert("Account is Younger than 1 day");
                     }
                 </script>
 

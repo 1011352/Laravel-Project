@@ -21,9 +21,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->has('category')) {
-            $weapons = Weapon::where('category_id', '=', $request->query('category'))->where('visibility', '=', '1')->get();
+            $weapons = Weapon::where('category_id', '=', $request->query('category'))->where('visibility', '=', '1')->paginate(5);
         } else {
-            $weapons = Weapon::where('visibility', '=', '1')->get();
+            $weapons = Weapon::where('visibility', '=', '1')->paginate(5);
         }
         $categories = Category::all();
         return view('home', compact('weapons', 'categories'));

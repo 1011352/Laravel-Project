@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\userPage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homePage;
 use App\Http\Controllers\adminPage;
@@ -22,7 +23,6 @@ Route::get('/admin-home', function () {
     return view('users');
 });
 
-Route::get('/home1',[homePage::class,'home'])->name('home1');
 Auth::routes();
 
 
@@ -33,6 +33,7 @@ Route::middleware(['auth','role_admin'])->group(function (){
     Route::resource('admin', adminPage::class);
 
 });
+
 
 Route::middleware(['auth'])->group(function (){
     Route::resource('weapons',weaponsController::class);
