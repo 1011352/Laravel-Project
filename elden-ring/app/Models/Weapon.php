@@ -16,7 +16,7 @@ class Weapon extends Model
     use HasFactory;
 
 
-    protected $fillable = ['weapon_1', 'weapon_2', 'description', 'category_id', 'user_id','visibility'];
+    protected $fillable = ['weapon_1', 'weapon_2', 'description', 'category_id', 'user_id','visibility', 'title'];
 
     protected static function booted()
     {

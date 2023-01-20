@@ -28,15 +28,22 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('home', compact('weapons', 'categories'));
     }
+
     public function search(Request $request)
     {
         $categories = Category::all();
         $weapons = Weapon::where('weapon_1', 'like', '%' . $request->search . '%')
+            ->where('visibility', '=', '1')
+            ->orWhere('title', 'like', '%' . $request->search . '%')
+            ->where('visibility', '=', '1')
             ->orWhere('weapon_2', 'like', '%' . $request->search . '%')
+            ->where('visibility', '=', '1')
             ->orWhere('category_id', 'like', '%' . $request->search . '%')
+            ->where('visibility', '=', '1')
             ->orWhere('description', 'like', '%' . $request->search . '%')
-            ->get();
-        return view('home', compact('weapons','categories'));
+            ->where('visibility', '=', '1')
+            ->paginate(5);
+        return view('home', compact('weapons', 'categories'));
     }
 
 }

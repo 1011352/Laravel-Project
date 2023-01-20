@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
+            $table->string('title');
             $table->string('weapon_1');
             $table->string('weapon_2');
             $table->longText('description');

@@ -8,14 +8,17 @@ use App\Models\User;
 
 class adminPage extends Controller
 {
-    public function index()  {
+    public function index()
+    {
         $users = user::orderBy('id', 'desc')->paginate(5);
         return view('admin.index', compact('users'));
     }
 
-    public function show(user $admin)  {
-        return view('admin.index',compact('admin'));
+    public function show(user $admin)
+    {
+        return view('admin.index', compact('admin'));
     }
+
     public function edit(user $admin)
     {
         return view('admin.edit', compact('admin'));

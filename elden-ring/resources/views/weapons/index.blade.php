@@ -62,6 +62,7 @@
         <thead>
         <tr>
             <th>S.No</th>
+            <th>Title</th>
             <th>Weapon 1</th>
             <th>Weapon 2</th>
             <th>Type</th>
@@ -73,6 +74,7 @@
         @foreach ($weapons as $weapon)
             <tr>
                 <td>{{ $weapon->id }}</td>
+                <td>{{ $weapon->title }}</td>
                 <td>{{ $weapon->weapon_1 }}</td>
                 <td>{{ $weapon->weapon_2 }}</td>
                 <td>{{ $weapon->category->name }}</td>

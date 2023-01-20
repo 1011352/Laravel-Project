@@ -1,12 +1,3 @@
-
-
-
-
-Werkt Niet
-
-
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -15,32 +6,30 @@ Werkt Niet
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center text-success">Nicesnippets.com</h3>
+                        <h3 class="text-center text-success">{{$weapon->title}}</h3>
                         <br/>
-                        <h2>{{ $weapon->description }}</h2>
+                        <h4>
+                            Weapon 1:
+                        </h4>
+                        <p>
+                            {{ $weapon->weapon_1 }}
+                        </p>
+                        <h4>
+                            Weapon 2:
+                        </h4>
+                        <p>
+                            {{ $weapon->weapon_2 }}
+                        </p>
+                        <h4>Description</h4>
+
                         <p>
                             {{ $weapon->description }}
                         </p>
-                        <hr />
-                        <h4>Display Comments</h4>
-
-                        @include('weapons.commentsDisplay', ['comments' => $weapon->comments, 'weapon_id' => $weapon->id])
-
-                        <hr />
-                        <h4>Add comment</h4>
-                        <form method="post" action="{{ route('comments.store'   ) }}">
-                            @csrf
-                            <div class="form-group">
-                                <textarea class="form-control" name="body"></textarea>
-                                <input type="hidden" name="post_id" value="{{ $weapon->id }}" />
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-success" value="Add Comment" />
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
+            <div class="pull-right mb-2">
+                <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+            </div>
         </div>
-    </div>
 @endsection

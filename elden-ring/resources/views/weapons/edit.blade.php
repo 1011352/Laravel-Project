@@ -33,6 +33,16 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Title:</strong>
+                    <input type="text" name="title" value="{{ $weapon->title }}" class="form-control"
+                           placeholder="title">
+                    @error('title')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Weapon 1:</strong>
                     <input type="text" name="weapon 1" value="{{ $weapon->weapon_1 }}" class="form-control"
                            placeholder="Weapon name">

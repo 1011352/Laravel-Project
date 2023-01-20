@@ -19,26 +19,21 @@ use \App\Http\Controllers\weaponsController;
 |
 */
 
-Route::get('/admin-home', function () {
-    return view('users');
-});
-
 Auth::routes();
 
 
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('home/search', [HomeController::class, 'search'])->name('home.search');
-Route::middleware(['auth','role_admin'])->group(function (){
+    Route::post('home/search', [HomeController::class, 'search'])->name('home.search');
+Route::middleware(['auth', 'role_admin'])->group(function () {
     Route::resource('admin', adminPage::class);
 
 });
 
 
-Route::middleware(['auth'])->group(function (){
-    Route::resource('weapons',weaponsController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('weapons', weaponsController::class);
     Route::post('weapons/search', [weaponsController::class, 'search'])->name('weapons.search');
-    Route::get('/changeVisibility', [weaponsController::class,'updateVisibility'])->name('weapons.visibility-update');
+    Route::get('/changeVisibility', [weaponsController::class, 'updateVisibility'])->name('weapons.visibility-update');
     Route::resource('user', userPage::class);
 
 });
